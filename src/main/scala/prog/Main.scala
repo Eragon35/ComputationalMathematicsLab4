@@ -1,19 +1,14 @@
 package prog
 
 import prog.IO.WriteToFile
-import prog.MathMethod.{BisectionMethod, FixedPointIteration, SecantMethod}
+import prog.ApproximationMethods.{BisectionMethod, FixedPointIteration, SecantMethod}
 
 import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
 
 object Main {
-  var accuracy: Double = 0.01
-  var left: Double = -10
-  var right: Double = 10
-  var step: Double = 0.25
-  var func: Double => Double = Math.pow(left, _)
-  var funcDerivative: Double => Double = Math.pow(left, _)
-  var funcSecondDerivative: Double => Double = Math.pow(left, _)
+
+  var array: Array[(Double, Double)] = Array[(Double, Double)]()
   var filename: String = "output"
   var answer: ArrayBuffer[String] = ArrayBuffer[String]()
 
@@ -28,14 +23,11 @@ object Main {
         | Функция f: −1,38x^3 − 5,42x^2 + 2,57x + 10,95""".stripMargin)
 
     while (true) {
-      println("\nВыберите функцию: ")
-      val temp = ConsoleHandler.functionHandler(StdIn.readLine())
-      func = temp._1
-      funcDerivative = temp._2
-      funcSecondDerivative = temp._3
-      Graph.show()
-      ConsoleHandler.confirmGraph()
-      val isConsole = ConsoleHandler.outputRoots()
+      println("\nВыберите функцию или введите точки из файла/консоли: ")
+      array = ConsoleHandler.inputHandler(StdIn.readLine())
+
+      println("Хотите вывести ответы в консоль?")
+      val isConsole = ConsoleHandler.agreeHandler(StdIn.readLine())
 
       BisectionMethod.solve() // find right root by 'Метод половинного деления'
       SecantMethod.solve() // find left root by 'Метод секущих'
@@ -45,9 +37,7 @@ object Main {
       if (isConsole) answer.foreach(x => println(x))
       else WriteToFile.write(filename)
 
-      left = -10
-      right = 10
-      step = 0.25
+
       answer.clear()
     }
   }

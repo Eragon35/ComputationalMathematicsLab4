@@ -1,7 +1,5 @@
 package prog.IO
 
-import prog.Main._
-
 import scala.io.Source
 
 object ReadFromFile {

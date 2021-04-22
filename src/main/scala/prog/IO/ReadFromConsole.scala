@@ -1,19 +1,16 @@
 package prog.IO
 
-import prog.Point
-
-import scala.+:
-import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
 
 object ReadFromConsole {
 
   def read(): Array[(Double, Double)]  = {
+    println("Вводите точки, в конце введите 'end'")
     var array = Array[(Double, Double)]()
     var line = ""
-    while (line != "end") {
-      line = StdIn.readLine()
-      val value = line.trim.split(" ").map(x => x.toDouble)
+    while (line != "end" | line != "конец" | line != "утв") {
+      line = StdIn.readLine().trim
+      val value = line.trim.replaceAll(",", ".").split(" ").map(x => x.toDouble)
       array = array :+ (value(0), value(1))
     }
     if (array.length < 12) throw new IllegalArgumentException("Кол-во точек должно быть больше либо равно 12")

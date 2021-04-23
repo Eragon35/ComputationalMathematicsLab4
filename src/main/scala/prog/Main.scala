@@ -5,10 +5,12 @@ import prog.IO.WriteToFile
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
+import prog.ApproximationMethods.Linear
 
 object Main {
 
   var array: mutable.Map[Double, Double] = collection.mutable.Map[Double, Double]()
+  var result: mutable.Map[String, Double] = collection.mutable.Map[Double, Double]()
   var filename: String = "output"
   var answer: ArrayBuffer[String] = ArrayBuffer[String]()
 
@@ -29,6 +31,8 @@ object Main {
 
       println("Хотите вывести ответы в консоль?")
       val isConsole = ConsoleHandler.agreeHandler(StdIn.readLine())
+
+      result += ("Linear approximation", Linear.solve(array)) // added resulting function of linear approximation
 
 //      BisectionMethod.solve() // find right root by 'Метод половинного деления'
 //      SecantMethod.solve() // find left root by 'Метод секущих'

@@ -5,12 +5,12 @@ import scala.io.Source
 object ReadFromFile {
 
   def read(fileName: String): collection.mutable.Map[Double, Double] = {
-    var array = collection.mutable.Map[Double, Double]()
+    val array = collection.mutable.Map[Double, Double]()
     try {
       FileChecker.check(fileName)
       val source = Source.fromFile(fileName)
       for (line <- source.getLines()) {
-        var value = line.replace(',', '.').split(" ").map(x => x.toDouble)
+        val value = line.replace(',', '.').split(" ").map(x => x.toDouble)
         array += (value(0) -> value(1))
       }
       source.close()

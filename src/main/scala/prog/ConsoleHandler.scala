@@ -38,7 +38,7 @@ object ConsoleHandler {
     val line = StdIn.readLine().trim.replaceAll(",", ".").split(" ").map(x => x.toDouble)
     val left = line(0)
     val right = line(1)
-    var array = collection.mutable.Map[Double, Double]()
+    val array = collection.mutable.Map[Double, Double]()
     for (i <- left to right by (right-left)/12) array += (i -> func(i))
     array
   }

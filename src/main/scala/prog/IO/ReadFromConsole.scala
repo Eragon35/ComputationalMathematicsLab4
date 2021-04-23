@@ -6,14 +6,14 @@ object ReadFromConsole {
 
   def read(): collection.mutable.Map[Double, Double]  = {
     println("Вводите точки, в конце введите 'end'")
-    var array = collection.mutable.Map[Double, Double]()
+    val array = collection.mutable.Map[Double, Double]()
     var line = StdIn.readLine().trim
     while (line != "end" | line != "конец" | line != "утв") {
       try {
         val value = line.trim.replaceAll(",", ".").split(" ").map(x => x.toDouble)
         array += (value(0) -> value(1))
       } catch {
-        case exception: Exception => Console.err.println("Problem with parsing numbers from string")
+        case _: Exception => Console.err.println("Problem with parsing numbers from string")
       }
       line = StdIn.readLine().trim.toLowerCase
     }

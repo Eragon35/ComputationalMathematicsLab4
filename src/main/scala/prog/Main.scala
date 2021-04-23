@@ -2,12 +2,13 @@ package prog
 
 import prog.IO.WriteToFile
 
+import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
 
 object Main {
 
-  var array = collection.mutable.Map[Double, Double]()
+  var array: mutable.Map[Double, Double] = collection.mutable.Map[Double, Double]()
   var filename: String = "output"
   var answer: ArrayBuffer[String] = ArrayBuffer[String]()
 
@@ -35,7 +36,7 @@ object Main {
 
       println("Начинаем вычислять корни:") // шучу сейчас буду только выводить корни
       if (isConsole) answer.foreach(x => println(x))
-      else WriteToFile.write(filename)
+      else WriteToFile.write(filename, answer)
 
 
       answer.clear()

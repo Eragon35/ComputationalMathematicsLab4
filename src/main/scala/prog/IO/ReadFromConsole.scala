@@ -4,16 +4,20 @@ import scala.io.StdIn
 
 object ReadFromConsole {
 
-  def read(): Array[(Double, Double)]  = {
+  def read(): collection.mutable.Map[Double, Double]  = {
     println("Вводите точки, в конце введите 'end'")
-    var array = Array[(Double, Double)]()
-    var line = ""
+    var array = collection.mutable.Map[Double, Double]()
+    var line = StdIn.readLine().trim
     while (line != "end" | line != "конец" | line != "утв") {
-      line = StdIn.readLine().trim
-      val value = line.trim.replaceAll(",", ".").split(" ").map(x => x.toDouble)
-      array = array :+ (value(0), value(1))
+      try {
+        val value = line.trim.replaceAll(",", ".").split(" ").map(x => x.toDouble)
+        array += (value(0) -> value(1))
+      } catch {
+        case exception: Exception => Console.err.println("Problem with parsing numbers from string")
+      }
+      line = StdIn.readLine().trim.toLowerCase
     }
-    if (array.length < 12) throw new IllegalArgumentException("Кол-во точек должно быть больше либо равно 12")
+    if (array.size < 12) throw new IllegalArgumentException("Кол-во точек должно быть больше либо равно 12")
     array
   }
 

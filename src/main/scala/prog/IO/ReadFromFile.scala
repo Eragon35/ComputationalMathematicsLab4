@@ -4,8 +4,8 @@ import scala.io.Source
 
 object ReadFromFile {
 
-  def read(fileName: String): collection.mutable.Map[Double, Double] = {
-    val array = collection.mutable.Map[Double, Double]()
+  def read(fileName: String): collection.mutable.SortedMap[Double, Double] = {
+    val array = collection.mutable.SortedMap[Double, Double]()
     try {
       FileChecker.check(fileName)
       val source = Source.fromFile(fileName)

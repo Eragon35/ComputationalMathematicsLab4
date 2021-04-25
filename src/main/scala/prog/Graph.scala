@@ -1,15 +1,18 @@
 package prog
 
-import prog.Main._
-
 import scalax.chart.module.Charting._
 
+import scala.collection.mutable
+
 object Graph {
-  def show(): Unit = {
+  def show(map: mutable.SortedMap[Double, Double], results: mutable.Map[String, Double => Double]): Unit = {
     val dataset = Seq(
-      ("Выбранная функция", for (x <- left to right by step) yield (x, func(x))),
-      ("0", for (x <- left to right by step) yield (x, 0.0))
+      ("Выбранная функция", for ((key, value) <- map) yield (key, value)),
+      ("0", for ((key, value) <- map) yield (key, 0.0))
     )
-    XYLineChart(dataset.toXYSeriesCollection()).show("График функции", (1280, 720), scrollable = true)
+//    for ((key,value) <- results) {
+//      dataset = dataset :+ (key, for (x <- map.keySet) yield (x, value(x)))
+//    }
+      XYLineChart(dataset.toXYSeriesCollection()).show("График функции", (1280, 720), scrollable = true)
   }
 }

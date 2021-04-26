@@ -1,5 +1,7 @@
 package prog.ApproximationMethods
 
+import prog.ApproximationMethods.MatrixStaff.Cramer
+
 import scala.collection.mutable
 
 object Linear {
@@ -14,11 +16,10 @@ object Linear {
       SY += y
       SXY += x * y
     }
-    val delta = SXX * map.size - SX * SX
-    val delta1 = SXY * map.size - SX * SY
-    val delta2 = SXX * SY - SX * SXY
-    val a = delta1 / delta
-    val b = delta2 / delta
+    val answer = Cramer.findSolution(SX, SXX, SY, SXY, map.size)
+    val a = answer._2
+    val b = answer._1
+
     val func = (x: Double) => a * x + b
     Approximation("Линейная аппроксимация", func, f"y = $a%1.4f * x + $b%1.4f",
       Deviation.find(map, func), SquareDeviation.find(map, func))

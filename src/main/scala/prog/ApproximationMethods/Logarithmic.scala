@@ -1,5 +1,7 @@
 package prog.ApproximationMethods
 
+import prog.ApproximationMethods.MatrixStaff.Cramer
+
 import scala.collection.mutable
 
 object Logarithmic {
@@ -14,11 +16,10 @@ object Logarithmic {
       SY += y
       YLnX += Math.log(x) * y
     }
-    val delta = Ln2X * map.size - LnX * LnX
-    val delta1 = YLnX * map.size - LnX * SY
-    val delta2 = Ln2X * SY - LnX * YLnX
-    val a = delta1 / delta
-    val b = delta2 / delta
+    val answer = Cramer.findSolution(LnX, Ln2X, SY, YLnX, map.size)
+    val a = answer._2
+    val b = answer._1
+
     val func = (x: Double) => a * Math.log(x) + b
     Approximation("Логарифмическая аппроксимация", func, f"y = $a%1.4f * ln x + $b%1.4f",
       Deviation.find(map, func), SquareDeviation.find(map, func))

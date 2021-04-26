@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ComputationalMathematicsLab2.iml" filepath="$PROJECT_DIR$/.idea/modules/ComputationalMathematicsLab2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ComputationalMathematicsLab2-build.iml" filepath="$PROJECT_DIR$/.idea/modules/ComputationalMathematicsLab2-build.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ComputationalMathematicsLab4.iml" filepath="$PROJECT_DIR$/.idea/modules/ComputationalMathematicsLab4.iml" />
     </modules>
   </component>
 </project>

@@ -16,15 +16,9 @@ object Power {
       LnY += Math.log(y)
       LnYLnX += Math.log(x) * Math.log(y)
     }
-    val delta = Ln2X * map.size - LnX * LnX
-    val delta1 = Ln2X * LnY - LnX * LnYLnX
-    val delta2 = LnYLnX * map.size - LnX * LnY
-//val answer = Cramer.findSolution(LnX, Ln2X, LnY, LnYLnX, map.size)
-//    val a = Math.pow(Math.E, answer._1)
-//    val b = answer._2
-
-    val a = Math.pow(Math.E, delta1 / delta)
-    val b = delta2 / delta
+    val answer = Cramer.findSolution(LnX, Ln2X, LnY, LnYLnX, map.size)
+    val a = Math.pow(Math.E, answer._1)
+    val b = answer._2
 
     val func = (x: Double) => a * Math.pow(x, b)
     Approximation("Степенная аппроксимация", func, f"y = $a%1.4f * x^$b%1.4f",

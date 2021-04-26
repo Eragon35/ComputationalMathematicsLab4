@@ -31,7 +31,7 @@ object ConsoleHandler {
   private def second(x: Double): Double = Math.cos(x)
   private def third(x: Double): Double = Math.pow(Math.E, x / 2)
   private def forth(x: Double): Double = Math.log(x)
-  private def fifth(x: Double): Double = -1.38 * Math.pow(x, 3) - 5.42 * Math.pow(x, 2) + 2.57 * x + 10.95
+  private def fifth(x: Double): Double = 1.38 * Math.pow(x, 3) - 5.42 * Math.pow(x, 2) + 2.57 * x + 10.95
 
   private def chooseRange(func: Double => Double): collection.mutable.SortedMap[Double, Double] = {
     println("Выберите диапазон для апроксимации функции")

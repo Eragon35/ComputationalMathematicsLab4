@@ -20,7 +20,7 @@ object Main {
         | Функция b: cos(x)
         | Функция c: e^(x / 2)
         | Функция d: ln x
-        | Функция f: −1,38x^3 − 5,42x^2 + 2,57x + 10,95""".stripMargin)
+        | Функция f: 1,38x^3 − 5,42x^2 + 2,57x + 10,95""".stripMargin)
 
     while (true) {
       println("\nВыберите функцию или введите точки из файла/консоли: ")
@@ -35,6 +35,7 @@ object Main {
       result += Exponential.solve(array)
       result += Power.solve(array)
 
+      result = result.sortWith(_.squareDeviation > _.squareDeviation)
       println("Начинаем вычислять корни:") // шучу сейчас буду только выводить корни
       if (isConsole) result.foreach(x => println(x))
       else WriteToFile.write(filename, result)

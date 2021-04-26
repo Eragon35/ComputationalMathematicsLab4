@@ -5,7 +5,7 @@ import prog.IO.WriteToFile
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
-import prog.ApproximationMethods.{Linear, Square}
+import prog.ApproximationMethods.{Deviation, Linear, Square}
 
 object Main {
 
@@ -35,7 +35,8 @@ object Main {
       result += ("Linear" -> Linear.solve(array)) // added resulting function of linear approximation
       result += ("Square" -> Square.solve(array)) // added resulting function of least squares approximation
 
-
+      answer += s"Линейная аппроксимация: отклонение = ${Deviation.find(array, result("Linear"))}"
+      answer += s"Квадратичная аппроксимация: отклонение = ${Deviation.find(array, result("Square"))}"
       println("Начинаем вычислять корни:") // шучу сейчас буду только выводить корни
       if (isConsole) answer.foreach(x => println(x))
       else WriteToFile.write(filename, answer)

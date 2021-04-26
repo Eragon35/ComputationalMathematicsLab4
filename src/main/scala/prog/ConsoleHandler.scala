@@ -47,7 +47,6 @@ object ConsoleHandler {
   def agreeHandler(line: String): Boolean = {
     line.trim.toLowerCase match {
       case "da" | "yes" | "y" | "+" | "true" | "да" => true
-      case a if a.replaceAll(",", ".").toDouble > 0 => true
       case _ => false
     }
   }

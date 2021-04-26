@@ -19,3 +19,8 @@ var xVector: ArrayBuffer[Double] = ArrayBuffer.range(0, 3).map(_ => 1.toDouble)
 var map = collection.mutable.Map[String, Double => Double]()
 val func: Double => Double = (x: Double) => 1.7 * x + 0.2
 map += ("Linear" -> func)
+
+case class Approximation(name: String, func: Double => Double, deviation: Double)
+
+val temp = Approximation("Linear", func, 0.311)
+temp.name

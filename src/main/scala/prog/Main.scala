@@ -5,15 +5,13 @@ import prog.IO.WriteToFile
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
-import prog.ApproximationMethods.{Deviation, Linear, Square}
+import prog.ApproximationMethods.{Approximation, Deviation, Linear, Square}
 
 object Main {
 
   var array: mutable.SortedMap[Double, Double] = collection.mutable.SortedMap[Double, Double]()
-  var result: mutable.Map[String, Double => Double] = collection.mutable.Map[String, Double => Double]()
+  var result: ArrayBuffer[Approximation] = ArrayBuffer[Approximation]()
   var filename: String = "output"
-  var answer: ArrayBuffer[String] = ArrayBuffer[String]()
-
 
   def main(args: Array[String]): Unit = {
     println(
@@ -32,19 +30,15 @@ object Main {
       println("Хотите вывести ответы в консоль?")
       val isConsole = ConsoleHandler.agreeHandler(StdIn.readLine())
 
-      result += ("Linear" -> Linear.solve(array)) // added resulting function of linear approximation
-      result += ("Square" -> Square.solve(array)) // added resulting function of least squares approximation
+      result += Linear.solve(array) // added resulting function of linear approximation
+      result += Square.solve(array) // added resulting function of least squares approximation
 
-      answer += s"Линейная аппроксимация: отклонение = ${Deviation.find(array, result("Linear"))}"
-      answer += s"Квадратичная аппроксимация: отклонение = ${Deviation.find(array, result("Square"))}"
       println("Начинаем вычислять корни:") // шучу сейчас буду только выводить корни
-      if (isConsole) answer.foreach(x => println(x))
-      else WriteToFile.write(filename, answer)
+      if (isConsole) result.foreach(x => println(x))
+      else WriteToFile.write(filename, result)
 
       Graph.show(array, result)
-
-
-      answer.clear()
+      result.clear()
     }
   }
 }

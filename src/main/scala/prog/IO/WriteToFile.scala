@@ -1,11 +1,13 @@
 package prog.IO
 
+import prog.ApproximationMethods.Approximation
+
 import java.io.{FileOutputStream, OutputStreamWriter}
 import scala.collection.mutable.ArrayBuffer
 
 object WriteToFile {
 
-  def write(filename: String, answer: ArrayBuffer[String]): Unit = {
+  def write(filename: String, answer: ArrayBuffer[Approximation]): Unit = {
     try {
       FileChecker.check(filename, full = false)
       val streamWriter = new OutputStreamWriter(new FileOutputStream(filename))

@@ -6,7 +6,7 @@ import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
 object Square {
-  def solve(map: mutable.SortedMap[Double, Double]): Double => Double = {
+  def solve(map: mutable.SortedMap[Double, Double]): Approximation = {
     var SX: Double = 0.0
     var SX2: Double = 0.0
     var SX3: Double = 0.0
@@ -35,6 +35,8 @@ object Square {
       ArrayBuffer(SX2, SX3, SX4, SX2Y)
     )
     val a = Gauss.findSolution(Gauss.findTriangleMatrix(matrix))
-    (x: Double) => a(0) + a(1) * x + a(2) * Math.pow(x, 2)
+    val func = (x: Double) => a(0) + a(1) * x + a(2) * Math.pow(x, 2)
+    Approximation("Квадратичная аппроксимация", func, Deviation.find(map, func),
+      f"y = ${a(2)}%1.4f x^2 + ${a(1)}%1.4f x + ${a(0)}%1.4f")
   }
 }

@@ -5,7 +5,7 @@ import prog.IO.WriteToFile
 import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
-import prog.ApproximationMethods.Linear
+import prog.ApproximationMethods.{Linear, Square}
 
 object Main {
 
@@ -27,20 +27,20 @@ object Main {
     while (true) {
       println("\nВыберите функцию или введите точки из файла/консоли: ")
       array = ConsoleHandler.inputHandler(StdIn.readLine())
-      array.foreach(x => println(x._1 + " " + x._2))
+//      array.foreach(x => println(x._1 + " " + x._2))
 
       println("Хотите вывести ответы в консоль?")
       val isConsole = ConsoleHandler.agreeHandler(StdIn.readLine())
 
-      result += ("Linear approximation" -> Linear.solve(array)) // added resulting function of linear approximation
+      result += ("Linear" -> Linear.solve(array)) // added resulting function of linear approximation
+      result += ("Square" -> Square.solve(array)) // added resulting function of least squares approximation
 
-//      BisectionMethod.solve() // find right root by 'Метод половинного деления'
-//      SecantMethod.solve() // find left root by 'Метод секущих'
-//      FixedPointIteration.solve() // find central root by 'Метод простой итерации'
 
       println("Начинаем вычислять корни:") // шучу сейчас буду только выводить корни
       if (isConsole) answer.foreach(x => println(x))
       else WriteToFile.write(filename, answer)
+
+      Graph.show(array, result)
 
 
       answer.clear()

@@ -34,8 +34,7 @@ object Square {
       ArrayBuffer(SX, SX2, SX3, SXY),
       ArrayBuffer(SX2, SX3, SX4, SX2Y)
     )
-    val triangleMatrix: ArrayBuffer[ArrayBuffer[Double]] = Gauss.findTriangleMatrix(matrix)
-    val a = Gauss.findSolution(triangleMatrix)
+    val a = Gauss.findSolution(Gauss.findTriangleMatrix(matrix))
     (x: Double) => a(0) + a(1) * x + a(2) * Math.pow(x, 2)
   }
 }

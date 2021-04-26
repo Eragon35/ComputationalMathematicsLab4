@@ -3,7 +3,7 @@ package prog.ApproximationMethods.MatrixStaff
 import scala.collection.mutable.ArrayBuffer
 
 object Gauss {
-  var order: ArrayBuffer[Int] = ArrayBuffer[Int]()
+  var order: ArrayBuffer[Int] = ArrayBuffer[Int](1, 2, 3)
   var xVector: ArrayBuffer[Double] = ArrayBuffer.range(0, 3).map(_ => 1.toDouble)
 
   def findTriangleMatrix(matrix: ArrayBuffer[ArrayBuffer[Double]]): ArrayBuffer[ArrayBuffer[Double]] = {

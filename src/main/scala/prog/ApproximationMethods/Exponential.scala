@@ -8,16 +8,16 @@ object Exponential {
     var SXX: Double = 0.0
     var SY: Double = 0.0
     var SXY: Double = 0.0
-    for ((key, value) <- map) {
-      SX += key
-      SXX += Math.pow(key, 2)
-      SY += value
-      SXY += key * value
+    for ((x, y) <- map) {
+      SX += x
+      SXX += Math.pow(x, 2)
+      SY += Math.log(y)
+      SXY += x * Math.log(y)
     }
     val delta = SXX * map.size - SX * SX
-    val delta1 = SXY * map.size - SX * SY
-    val delta2 = SXX * SY - SX * SXY
-    val a = delta1 / delta
+    val delta1 = SXX * SY - SX * SXY
+    val delta2 = SXY * map.size - SX * SY
+    val a = Math.pow(Math.E, delta1 / delta)
     val b = delta2 / delta
 
     val func = (x: Double) => a * Math.pow(Math.E,b * x)

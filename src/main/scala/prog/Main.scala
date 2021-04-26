@@ -32,8 +32,8 @@ object Main {
       result += Linear.solve(array)
       result += Square.solve(array)
       result += Logarithmic.solve(array)
-      result += Power.solve(array)
       result += Exponential.solve(array)
+      result += Power.solve(array)
 
       println("Начинаем вычислять корни:") // шучу сейчас буду только выводить корни
       if (isConsole) result.foreach(x => println(x))

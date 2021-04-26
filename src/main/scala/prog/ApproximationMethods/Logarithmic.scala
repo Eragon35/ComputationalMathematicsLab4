@@ -8,11 +8,11 @@ object Logarithmic {
     var Ln2X: Double = 0.0
     var SY: Double = 0.0
     var YLnX: Double = 0.0
-    for ((key, value) <- map) {
-      LnX += Math.log(key)
-      Ln2X += Math.pow(Math.log(key), 2)
-      SY += value
-      YLnX += Math.log(key) * value
+    for ((x, y) <- map) {
+      LnX += Math.log(x)
+      Ln2X += Math.pow(Math.log(x), 2)
+      SY += y
+      YLnX += Math.log(x) * y
     }
     val delta = Ln2X * map.size - LnX * LnX
     val delta1 = YLnX * map.size - LnX * SY

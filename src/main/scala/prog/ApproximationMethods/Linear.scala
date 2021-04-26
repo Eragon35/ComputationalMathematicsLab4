@@ -8,11 +8,11 @@ object Linear {
     var SXX: Double = 0.0
     var SY: Double = 0.0
     var SXY: Double = 0.0
-    for ((key, value) <- map) {
-      SX += key
-      SXX += Math.pow(key, 2)
-      SY += value
-      SXY += key * value
+    for ((x, y) <- map) {
+      SX += x
+      SXX += Math.pow(x, 2)
+      SY += y
+      SXY += x * y
     }
     val delta = SXX * map.size - SX * SX
     val delta1 = SXY * map.size - SX * SY

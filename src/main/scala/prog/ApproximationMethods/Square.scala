@@ -14,14 +14,14 @@ object Square {
     var SY: Double = 0.0
     var SXY: Double = 0.0
     var SX2Y: Double = 0.0
-    for ((key, value) <- map) {
-      SX += key
-      SX2 += Math.pow(key, 2)
-      SX3 += Math.pow(key, 3)
-      SX4 += Math.pow(key, 4)
-      SY += value
-      SXY += key * value
-      SX2Y += Math.pow(key, 2) * value
+    for ((x, y) <- map) {
+      SX += x
+      SX2 += Math.pow(x, 2)
+      SX3 += Math.pow(x, 3)
+      SX4 += Math.pow(x, 4)
+      SY += y
+      SXY += x * y
+      SX2Y += Math.pow(x, 2) * y
     }
     /*   a0  a1  a2
     map.size sx  sx2 | sy

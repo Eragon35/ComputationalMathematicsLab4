@@ -5,7 +5,7 @@ import scala.collection.mutable
 object Deviation {
   def find(map: mutable.SortedMap[Double, Double], func: Double => Double): Double = {
     var deviation: Double = 0
-    for ((key, value) <- map) deviation += Math.pow(func(key) - value, 2)
+    for ((x, y) <- map) deviation += Math.pow(func(x) - y, 2)
     deviation
   }
 }

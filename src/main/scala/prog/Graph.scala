@@ -12,6 +12,9 @@ object Graph {
       ("Выбранная функция", for ((key, value) <- map) yield (key, value)),
       (results(0).toString, for ((key, _) <- map) yield (key, results(0).func(key))),
       (results(1).toString, for ((key, _) <- map) yield (key, results(1).func(key))),
+      (results(2).toString, for ((key, _) <- map) yield (key, results(2).func(key))),
+//      (results(3).toString, for ((key, _) <- map) yield (key, results(3).func(key))),
+//      (results(4).toString, for ((key, _) <- map) yield (key, results(4).func(key))),
       ("y = 0", for ((key, _) <- map) yield (key, 0.0))
     )
     XYLineChart(dataset.toXYSeriesCollection()).show("График функции", (1280, 720), scrollable = true)

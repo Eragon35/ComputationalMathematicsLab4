@@ -24,3 +24,7 @@ case class Approximation(name: String, func: Double => Double, deviation: Double
 
 val temp = Approximation("Linear", func, 0.311)
 temp.name
+
+val a = 2.0
+val b = 3.334444
+f"y = $a%1.4f * e^($b%1.4fx)"

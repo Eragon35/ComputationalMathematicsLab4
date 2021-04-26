@@ -14,7 +14,7 @@ object Graph {
       (results(1).toString, for ((x, _) <- map) yield (x, results(1).func(x))),
       (results(2).toString, for ((x, _) <- map) yield (x, results(2).func(x))),
       (results(3).toString, for ((x, _) <- map) yield (x, results(3).func(x))),
-//      (results(4).toString, for ((x, _) <- map) yield (x, results(4).func(x))),
+      (results(4).toString, for ((x, _) <- map) yield (x, results(4).func(x))),
       ("y = 0", for ((x, _) <- map) yield (x, 0.0))
     )
     XYLineChart(dataset.toXYSeriesCollection()).show("График функции", (1280, 720), scrollable = true)

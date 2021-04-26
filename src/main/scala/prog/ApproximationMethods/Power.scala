@@ -22,6 +22,6 @@ object Power {
 
     val func = (x: Double) => a * Math.pow(x, b)
     Approximation("Степенная аппроксимация", func, f"y = $a%1.4f * x^$b%1.4f",
-      Deviation.find(map, func), SquareDeviation.find(map, func))
+      Deviation.find(map, func), Deviation.findSquare(map, func))
   }
 }

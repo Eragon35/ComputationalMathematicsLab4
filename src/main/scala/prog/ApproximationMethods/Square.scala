@@ -37,6 +37,6 @@ object Square {
     val a = Gauss.findSolution(Gauss.findTriangleMatrix(matrix))
     val func = (x: Double) => a(0) + a(1) * x + a(2) * Math.pow(x, 2)
     Approximation("Квадратичная аппроксимация", func, f"y = ${a(2)}%1.4f x^2 + ${a(1)}%1.4f x + ${a(0)}%1.4f",
-      Deviation.find(map, func), SquareDeviation.find(map, func))
+      Deviation.find(map, func), Deviation.findSquare(map, func))
   }
 }

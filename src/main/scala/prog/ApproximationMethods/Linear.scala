@@ -22,6 +22,6 @@ object Linear {
 
     val func = (x: Double) => a * x + b
     Approximation("Линейная аппроксимация", func, f"y = $a%1.4f * x + $b%1.4f",
-      Deviation.find(map, func), SquareDeviation.find(map, func))
+      Deviation.find(map, func), Deviation.findSquare(map, func))
   }
 }

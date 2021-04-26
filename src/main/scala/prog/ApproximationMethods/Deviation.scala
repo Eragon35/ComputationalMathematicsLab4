@@ -8,4 +8,8 @@ object Deviation {
     for ((x, y) <- map) deviation += Math.pow(func(x) - y, 2)
     deviation
   }
+
+  def findSquare(map: mutable.SortedMap[Double, Double], func: Double => Double): Double =
+    Math.sqrt(find(map, func) / map.size)
+
 }

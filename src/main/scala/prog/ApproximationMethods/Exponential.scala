@@ -22,6 +22,6 @@ object Exponential {
 
     val func = (x: Double) => a * Math.pow(Math.E,b * x)
     Approximation("Экспоненциальня аппроксимация", func, f"y = $a%1.4f * e^($b%1.4fx)",
-      Deviation.find(map, func), SquareDeviation.find(map, func))
+      Deviation.find(map, func), Deviation.findSquare(map, func))
   }
 }

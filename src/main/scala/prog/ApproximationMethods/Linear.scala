@@ -20,7 +20,8 @@ object Linear {
     val a = delta1 / delta
     val b = delta2 / delta
     val func = (x: Double) => a * x + b
-    Approximation("Линейная аппроксимация", func, Deviation.find(map, func), f"y = $a%1.4f * x + $b%1.4f")
+    Approximation("Линейная аппроксимация", func, f"y = $a%1.4f * x + $b%1.4f",
+      Deviation.find(map, func), SquareDeviation.find(map, func))
   }
 
 }

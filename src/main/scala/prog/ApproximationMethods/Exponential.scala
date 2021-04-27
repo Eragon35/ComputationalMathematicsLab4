@@ -2,10 +2,10 @@ package prog.ApproximationMethods
 
 import prog.ApproximationMethods.MatrixStaff.Cramer
 
-import scala.collection.mutable
+import scala.collection.immutable
 
 object Exponential {
-  def solve(map: mutable.SortedMap[Double, Double]): Approximation = {
+  def solve(map: immutable.SortedMap[Double, Double]): Approximation = {
     var SX: Double = 0.0
     var SXX: Double = 0.0
     var SY: Double = 0.0

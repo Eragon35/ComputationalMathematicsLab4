@@ -2,10 +2,10 @@ package prog.ApproximationMethods
 
 import prog.ApproximationMethods.MatrixStaff.Cramer
 
-import scala.collection.mutable
+import scala.collection.{immutable, mutable}
 
 object Power {
-  def solve(map: mutable.SortedMap[Double, Double]): Approximation = {
+  def solve(map: immutable.SortedMap[Double, Double]): Approximation = {
     var LnX: Double = 0.0
     var Ln2X: Double = 0.0
     var LnY: Double = 0.0

@@ -2,11 +2,11 @@ package prog.ApproximationMethods
 
 import prog.ApproximationMethods.MatrixStaff.Gauss
 
-import scala.collection.mutable
+import scala.collection.immutable
 import scala.collection.mutable.ArrayBuffer
 
 object Square {
-  def solve(map: mutable.SortedMap[Double, Double]): Approximation = {
+  def solve(map: immutable.SortedMap[Double, Double]): Approximation = {
     var SX: Double = 0.0
     var SX2: Double = 0.0
     var SX3: Double = 0.0

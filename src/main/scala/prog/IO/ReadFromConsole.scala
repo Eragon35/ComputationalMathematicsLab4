@@ -4,9 +4,9 @@ import scala.io.StdIn
 
 object ReadFromConsole {
 
-  def read(): collection.mutable.SortedMap[Double, Double]  = {
+  def read(): collection.immutable.SortedMap[Double, Double]  = {
     println("Вводите точки, в конце введите 'end'")
-    val array = collection.mutable.SortedMap[Double, Double]()
+    var array = collection.immutable.SortedMap[Double, Double]()
     var line = StdIn.readLine().trim
     while (line != "end" | line != "конец" | line != "утв") {
       try {

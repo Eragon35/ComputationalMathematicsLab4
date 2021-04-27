@@ -2,16 +2,16 @@ package prog
 
 import prog.IO.WriteToFile
 
-import scala.collection.mutable
+import scala.collection.immutable
 import scala.collection.mutable.ArrayBuffer
 import scala.io.StdIn
 import prog.ApproximationMethods.{Approximation, Exponential, Linear, Logarithmic, Power, Square}
 
 object Main {
 
-  var array: mutable.SortedMap[Double, Double] = collection.mutable.SortedMap[Double, Double]()
+  var array: immutable.SortedMap[Double, Double] = immutable.SortedMap[Double, Double]()
   var result: ArrayBuffer[Approximation] = ArrayBuffer[Approximation]()
-  var filename: String = "output"
+  var outputFilename: String = "output"
 
   def main(args: Array[String]): Unit = {
     println(
@@ -36,9 +36,10 @@ object Main {
       result += Power.solve(array)
 
       result = result.sortWith(_.squareDeviation > _.squareDeviation)
+      result = result.filter(x => !x.deviation.isNaN) // filter if approximation exists
       println("Начинаем вычислять корни:") // шучу сейчас буду только выводить корни
       if (isConsole) result.foreach(x => println(x))
-      else WriteToFile.write(filename, result)
+      else WriteToFile.write(outputFilename, result)
 
       Graph.show(array, result)
       result.clear()

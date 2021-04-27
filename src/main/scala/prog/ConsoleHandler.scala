@@ -9,7 +9,7 @@ object ConsoleHandler {
   private val inputFile = "input"
 
   @tailrec
-  def inputHandler(line: String): collection.mutable.SortedMap[Double, Double] = {
+  def inputHandler(line: String): collection.immutable.SortedMap[Double, Double] = {
     line.trim.toLowerCase match {
       case "file" | "fiel" | "файл" | "афшл" => ReadFromFile.read(inputFile)
       case "console" | "консоль" | "сонсолу" => ReadFromConsole.read()
@@ -21,7 +21,7 @@ object ConsoleHandler {
       case "exit" | "no" | "n" | "учше" =>
         print("Хорошего Вам дня!")
         System.exit(0)
-        collection.mutable.SortedMap[Double, Double]() // костыль чтобы иметь возможность выйти из программы
+        collection.immutable.SortedMap[Double, Double]() // костыль чтобы иметь возможность выйти из программы
       case _ => Console.err.println("Давай по новой, Миша все х*йня")
         inputHandler(StdIn.readLine())
     }
@@ -33,12 +33,12 @@ object ConsoleHandler {
   private def forth(x: Double): Double = Math.log(x)
   private def fifth(x: Double): Double = 1.38 * Math.pow(x, 3) - 5.42 * Math.pow(x, 2) + 2.57 * x + 10.95
 
-  private def chooseRange(func: Double => Double): collection.mutable.SortedMap[Double, Double] = {
+  private def chooseRange(func: Double => Double): collection.immutable.SortedMap[Double, Double] = {
     println("Выберите диапазон для апроксимации функции")
     val line = StdIn.readLine().trim.replaceAll(",", ".").split(" ").map(x => x.toDouble)
     val left = line(0)
     val right = line(1)
-    val array = collection.mutable.SortedMap[Double, Double]()
+    var array = collection.immutable.SortedMap[Double, Double]()
     for (i <- left to right by (right-left)/12) array += (i -> func(i))
     array
   }
